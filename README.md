@@ -67,6 +67,14 @@ browser login). To use Looki:
 Your phone may ask permission to read the clipboard the first time. If it
 refuses, paste into the text box and tap **Fill Form From Text**.
 
+### AI devices (optional)
+
+You do not need any AI device to use the app. Devices that record word for
+word (Looki, Ray-Ban Meta, Cyan, Fieldy) are there to help you remember exactly
+what was said in a conversation, so details do not get twisted by memory. See
+`guide.html` for setup steps. Check your district's policy and local recording
+rules before recording anyone.
+
 ### Export your logs
 
 Open the **Export** tab to download your logs as a CSV file you can open in
@@ -118,6 +126,12 @@ on your device and are not affected by an update. If the app looks unchanged
 after an update, refresh the page or close and reopen it.
 
 ## Privacy
+
+Logs are saved in two places only: on your device, and in your own Google
+Sheet as a backup if you set up the webhook. Nothing saved is accessible
+outside your device unless you share a copy yourself. Share your Google Sheet
+with your supervisor when needed, or export the logs you need when
+documentation is required to support a specific incident.
 
 Log kid counts only. Do not enter student names in notes if your district does
 not allow it.

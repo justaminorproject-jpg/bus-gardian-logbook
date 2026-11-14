@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bus Gardian LogBook - How to Use</title>
+<style>
+  :root{
+    --bg:#f6f6f3; --card:#ffffff; --ink:#111111; --muted:#555555;
+    --accent:#ffc400; --accent-ink:#111111; --code-bg:#fff8dc; --line:#111111;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#141414; --card:#1f1f1f; --ink:#f2f2f2; --muted:#b5b5b5;
+           --accent:#ffc400; --accent-ink:#111111; --code-bg:#2a2616; --line:#f2f2f2; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       -webkit-text-size-adjust:100%}
+  header{background:var(--accent);color:var(--accent-ink);border-bottom:3px solid #111;padding:18px 16px}
+  header .in,main{max-width:760px;margin:0 auto}
+  header h1{margin:0;font-size:24px;line-height:1.15;font-weight:900}
+  header p{margin:4px 0 0;font-weight:600}
+  main{padding:16px}
+  .open-app{display:inline-block;margin-top:12px;background:#111;color:#ffc400;
+            border-radius:12px;padding:10px 16px;font-weight:800;text-decoration:none}
+  nav.toc{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:16px}
+  nav.toc h2{margin:0 0 6px;font-size:14px;text-transform:uppercase;letter-spacing:.04em}
+  nav.toc a{display:inline-block;margin:4px 8px 4px 0;padding:6px 10px;border:2px solid var(--line);
+            border-radius:999px;color:var(--ink);text-decoration:none;font-weight:700;font-size:14px}
+  section{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px;
+          box-shadow:4px 4px 0 var(--line)}
+  h2{margin:0 0 8px;font-size:21px;line-height:1.2}
+  h3{margin:18px 0 6px;font-size:17px}
+  p{margin:8px 0}
+  ol,ul{padding-left:22px;margin:8px 0}
+  li{margin:5px 0}
+  code{background:var(--code-bg);border:1px solid var(--line);border-radius:6px;padding:1px 5px;
+       font:14px ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
+  pre{background:var(--code-bg);border:2px solid var(--line);border-radius:12px;padding:12px;
+      overflow:auto;margin:10px 0;font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;max-width:100%}
+  pre code{background:none;border:0;padding:0;font-size:inherit}
+  button.copy{background:var(--accent);color:var(--accent-ink);border:2px solid #111;border-radius:12px;
+              padding:10px 14px;font-weight:800;font-size:15px;min-height:44px;cursor:pointer}
+  .note{border-left:6px solid var(--accent);background:var(--code-bg);padding:10px 12px;border-radius:8px;margin:10px 0}
+  .warn{border-left:6px solid #d33;background:var(--code-bg);padding:10px 12px;border-radius:8px;margin:10px 0}
+  .tag{display:inline-block;background:#111;color:#ffc400;border-radius:999px;padding:1px 9px;
+       font-size:12px;font-weight:800;vertical-align:middle}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px}
+  th,td{border:2px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:var(--accent);color:var(--accent-ink)}
+  .tablewrap{overflow-x:auto}
+  footer{max-width:760px;margin:0 auto;padding:4px 16px 32px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <h1>Bus Gardian LogBook</h1>
+    <p>How to use it, and how to set up Google Sheets and your AI devices</p>
+    <a class="open-app" href="./">Open the app</a>
+  </div>
+</header>
+
+<main>
+<nav class="toc" aria-label="Contents">
+  <h2>Jump to</h2>
+  <a href="#install">Install</a>
+  <a href="#privacy">Your data</a>
+  <a href="#daily">Daily use</a>
+  <a href="#fill">Fill from a note</a>
+  <a href="#sheets">Google Sheets</a>
+  <a href="#devices">AI devices</a>
+  <a href="#backup">Backup</a>
+  <a href="#help">Troubleshooting</a>
+</nav>
+
+<section id="install">
+  <h2>1. Put it on your phone</h2>
+  <ul>
+    <li><b>Android (Chrome):</b> open the app, tap the menu (three dots), then <b>Add to Home screen</b> or <b>Install app</b>.</li>
+    <li><b>iPhone (Safari):</b> open the app, tap Share, then <b>Add to Home Screen</b>.</li>
+  </ul>
+  <div class="note">Your logs are saved <b>on that phone only</b>, in the browser. A different phone, a private window,
+  or clearing browser data will not have them. Export now and then as a backup (see <a href="#backup">Backup</a>).</div>
+</section>
+
+<section id="privacy">
+  <h2>Where your logs are saved</h2>
+  <p>Your logs are saved in two places only:</p>
+  <ol>
+    <li><b>On your device.</b> Every log you save stays in the app on your phone.</li>
+    <li><b>In your own Google Sheet</b>, as a backup, if you set up Google Sheets in <a href="#sheets">section 4</a>.</li>
+  </ol>
+  <p>Nothing you save can be seen by anyone else, or reached from anywhere else, unless you share a copy yourself:</p>
+  <ul>
+    <li><b>Share your Google Sheet</b> with your supervisor when they need it.</li>
+    <li><b>Export the logs you need</b> (Export tab) when you need documentation to support a specific incident.</li>
+  </ul>
+</section>
+
+<section id="daily">
+  <h2>2. Log a run</h2>
+  <p>The bottom bar has six tabs: <b>Today, Week, Schools, Voice, Settings, Export</b>.</p>
+  <h3>Set up once, in Settings</h3>
+  <ol>
+    <li>Open <b>Settings</b> and enter your <b>Driver Name</b> and <b>Bus Number</b>, then tap <b>Save Profile</b>.</li>
+    <li>Open <b>Schools</b> and make sure your schools are listed.</li>
+  </ol>
+  <h3>Each run, on the Today tab</h3>
+  <ol>
+    <li>Check the <b>Date</b>, then choose the <b>School</b>.</li>
+    <li>Enter the <b>Route Number</b> and <b>Tier</b> (0 to 5). The <b>Bus Number</b> starts at 4114 and can be changed.</li>
+    <li>Tick <b>Spare</b> and enter the spare bus number if you are on a spare bus.</li>
+    <li>Tick <b>Route Sub/Breakdown</b> if you are covering another route or a bus breakdown. It clears after you save.</li>
+    <li>Tap <b>Start Route Now</b> or type the <b>Start Time</b>. Fill in the <b>End Time</b> when you finish (the <b>Now</b> button stamps the current time).</li>
+    <li>Add the kids count, weather, notes and anything else that applies, then tap <b>Save Log</b>.</li>
+  </ol>
+  <p>The <b>Week</b> tab lists your saved logs and totals. To fix a log, open it and use its edit option; it loads back into the form so you can save it again.</p>
+  <div class="note">Log kid counts only. Do not put student names in notes if your district does not allow it.</div>
+</section>
+
+<section id="fill">
+  <h2>3. Fill the form from a note</h2>
+  <p>Instead of typing, you can say or paste one line and let the app fill the form.</p>
+  <p>Example line:</p>
+  <pre><code>route 336 tier 0 bus 4114 PM 15 kids</code></pre>
+  <ol>
+    <li>Open the <b>Voice</b> tab.</li>
+    <li>Tap <b>Start Mic</b> and speak the line, <b>or</b> paste it into the box.</li>
+    <li>Tap <b>Fill Form From Text</b> (or copy the line anywhere and tap <b>Paste &amp; Fill From Clipboard</b>).</li>
+    <li>A message lists what was filled. Go to the <b>Today</b> tab, check it, and tap <b>Save Log</b>.</li>
+  </ol>
+  <p>It understands route, tier, bus, kids, AM/PM, delay minutes ("10 minutes late"), weather, spare bus,
+  your school's name, and the words "breakdown" or "route sub". Numbers in words work too ("twenty five students").
+  Nothing is saved until you tap Save Log.</p>
+  <h3>Using a link</h3>
+  <p>Opening the app with your note after <code>?gardian=</code> fills the form the same way, for example:</p>
+  <pre><code>https://bus-gardian.netlify.app?gardian=route%20336%20tier%200%20bus%204114%20PM%2015%20kids</code></pre>
+  <p>In Settings, each device section has a <b>Generate Link</b> button that builds a link like this from its template.</p>
+</section>
+
+<section id="sheets">
+  <h2>4. Send your logs to Google Sheets</h2>
+  <p>Each time you save a log, the app can also send it to a Google Sheet. You set this up once.</p>
+
+  <h3>A. Make the sheet and the script</h3>
+  <ol>
+    <li>Go to <b>sheets.google.com</b> and create a new blank spreadsheet. Name it "Bus LogBook".</li>
+    <li>Click <b>Extensions &rarr; Apps Script</b>.</li>
+    <li>Delete everything in the editor, then paste the script below.</li>
+    <li>Click the save icon.</li>
+  </ol>
+  <pre id="script"><code>const HEADERS = ["id","localDate","localTime","school","route","tier","bus",
+  "spare","spareBus","breakdownCover","startTime","endTime","weather","road",
+  "tripShift","traffic","delayMin","odometer","kids","notes","issues","createdAt"];
+
+function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("Logs") || ss.insertSheet("Logs");
+  if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
+
+  var data = {};
+  try { data = JSON.parse(e.postData.contents); }
+  catch (err) { data = { notes: "Unreadable data" }; }
+
+  if (data.test) {
+    data = { school: "TEST", notes: "Webhook test" };
+  }
+
+  sheet.appendRow(HEADERS.map(function (h) {
+    return data[h] === undefined ? "" : data[h];
+  }));
+  return ContentService.createTextOutput("ok");
+}</code></pre>
+  <p><button class="copy" type="button" id="copybtn">Copy the script</button> <span id="copystate" aria-live="polite"></span></p>
+
+  <h3>B. Publish it as a web app</h3>
+  <ol>
+    <li>Click <b>Deploy &rarr; New deployment</b>.</li>
+    <li>Click the gear icon and choose <b>Web app</b>.</li>
+    <li>Set <b>Execute as</b> to <b>Me</b>.</li>
+    <li>Set <b>Who has access</b> to <b>Anyone</b>. (The app cannot sign in to Google, so this is required.)</li>
+    <li>Click <b>Deploy</b>, then <b>Authorize access</b> and approve with your Google account. If Google says the app is
+        unverified, click <b>Advanced</b> and continue. It is your own script.</li>
+    <li>Copy the <b>Web app URL</b>. It ends in <code>/exec</code>.</li>
+  </ol>
+  <div class="warn"><b>Keep that URL private.</b> Anyone who has it can add rows to your sheet.</div>
+
+  <h3>C. Connect the app</h3>
+  <ol>
+    <li>Open the app, go to <b>Settings</b>, and find <b>Google Sheets Webhook Connection</b>.</li>
+    <li>Paste the URL into <b>Webhook URL</b>.</li>
+    <li>Turn <b>Auto Save</b> on. <b>Logs are only sent when Auto Save is on.</b></li>
+    <li>Tap <b>Save All</b>, then <b>Test Webhook</b>.</li>
+    <li>Open your sheet. A new <b>Logs</b> tab should appear with a TEST row. You can delete that row.</li>
+  </ol>
+  <div class="note">The app sends data in a way that cannot report errors back, so it will say "sent" even if the sheet did not
+  receive it. Always check the sheet after the test. If you later edit the script, use
+  <b>Deploy &rarr; Manage deployments &rarr; edit &rarr; New version</b>, or the changes will not take effect.</div>
+
+  <h3>What each column means</h3>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Column</th><th>Meaning</th></tr>
+    <tr><td>localDate, localTime</td><td>When the log was saved</td></tr>
+    <tr><td>school, route, tier, bus</td><td>The main run details</td></tr>
+    <tr><td>spare, spareBus</td><td>Whether a spare was used, and its number</td></tr>
+    <tr><td>breakdownCover</td><td>The Route Sub/Breakdown box</td></tr>
+    <tr><td>startTime, endTime, delayMin</td><td>Times and minutes late</td></tr>
+    <tr><td>weather, road, tripShift, traffic</td><td>Conditions, and AM/PM shift</td></tr>
+    <tr><td>odometer, kids, notes, issues</td><td>Mileage, rider count, free text</td></tr>
+  </table>
+  </div>
+  <p>Only logs saved after you turn Auto Save on are sent. To move older logs into the sheet, use the <b>Export</b>
+  tab to download a CSV and import it with <b>File &rarr; Import</b>.</p>
+</section>
+
+<section id="devices">
+  <h2>5. AI devices (optional)</h2>
+  <div class="note"><b>You do not need any of these devices to use the app.</b> Devices that can record what is said word for
+  word are there to help you remember exactly what was said in a conversation, so details do not get twisted by memory.
+  They are a helpful extra, not a requirement.<br><br>
+  Before you record anyone, check your district's policy and your local recording rules.</div>
+  <p>All of these work the same way in the end: the device captures what you say, you get that text, and the app fills
+  the form from it. The app itself only reads text. It does not connect to any device directly, so you always check the
+  form and tap Save Log yourself.</p>
+
+  <div class="note">What to say, for every device: a short line such as <code>route 336 tier 0 bus 4114 PM 15 kids</code>.
+  Say it clearly and include the words route, tier, bus and kids.</div>
+
+  <h3>Looki L1 <span class="tag">via Claude Code</span></h3>
+  <p>Looki connects through its own sign-in, which a web page cannot do, so the link goes through Claude Code.</p>
+  <ol>
+    <li>On your computer, install the plugin: <code>npx -y plugins add looki-ai/looki-plugin --target claude-code -y</code></li>
+    <li>Restart Claude Code, or run <code>/reload-plugins</code>.</li>
+    <li>Run <code>/mcp</code>, choose <b>looki</b>, then <b>Authenticate</b>, and sign in on the Looki page that opens.
+        Type your login only on Looki's own page.</li>
+    <li>Run <code>/mcp</code> again and make sure <b>looki</b> shows as connected.</li>
+    <li>Wear your Looki and say your log line aloud.</li>
+    <li>In Claude Code, ask: <i>"Find my latest Looki moment and give me the bus log as one line: route, tier, bus, AM or PM, kids."</i></li>
+    <li>Copy that line. In the app, open <b>Voice</b> and tap <b>Paste &amp; Fill From Clipboard</b>.</li>
+  </ol>
+  <p>This depends on Looki capturing and summarizing what you said. Check the line Claude gives you against what you said before you save.</p>
+
+  <h3>Ray-Ban Meta glasses</h3>
+  <ol>
+    <li>In the app, open <b>Settings</b>, find <b>Ray-Ban Meta Glasses</b>, and turn <b>Meta Enabled</b> on.</li>
+    <li>Say: <i>"Hey Meta, take a note: Gardian, route 336 tier 0 bus 4114 PM 15 kids."</i></li>
+    <li>Open the note in the Meta app and copy its text.</li>
+    <li>In the app, open <b>Voice</b> and tap <b>Paste &amp; Fill From Clipboard</b>.</li>
+  </ol>
+
+  <h3>Cyan (HeyCyan) smart glasses</h3>
+  <ol>
+    <li>In Settings, find the <b>Cyan</b> section and turn <b>Cyan Enabled</b> on.</li>
+    <li>Wear the glasses and power them on.</li>
+    <li>Say: <i>"HeyCyan, take a note: Gardian, route 336 tier 0 bus 4114 PM 15 kids."</i></li>
+    <li>Open the Cyan app, copy the note's transcript, then use <b>Paste &amp; Fill From Clipboard</b> on the Voice tab.</li>
+  </ol>
+
+  <h3>Fieldy pendant or watch</h3>
+  <ol>
+    <li>In Settings, find <b>Fieldy</b> and turn <b>Fieldy Enabled</b> on.</li>
+    <li>Wear Fieldy, make sure it is paired to your phone by Bluetooth, and tap it to start listening.</li>
+    <li>Say: <i>"Gardian, route 336 tier 0 bus 4114 PM 15 kids."</i></li>
+    <li>Open the Fieldy app, copy the transcript line, then use <b>Paste &amp; Fill From Clipboard</b> on the Voice tab.</li>
+  </ol>
+
+  <div class="warn"><b>About "Auto Sync" buttons in Settings.</b> The Fieldy section says the app can receive transcripts
+  automatically through the webhook. It cannot: the webhook only sends logs <i>out</i> to Google Sheets. For now, use the
+  copy-and-paste steps above.</div>
+
+  <h3>No device? Use your phone's own voice typing</h3>
+  <p>On the Voice tab, tap <b>Start Mic</b> and say the line, or tap the microphone on your phone's keyboard in the text box.</p>
+</section>
+
+<section id="backup">
+  <h2>6. Backup and reset</h2>
+  <ul>
+    <li><b>Export:</b> open the <b>Export</b> tab and download your logs as a CSV file. Open it in Excel or Google Sheets.</li>
+    <li><b>Reset:</b> <b>Settings &rarr; Clear and Reset - All Keys</b> removes logs, schools and settings from this phone.
+        You must tick the confirmation box, then tap <b>Yes, Delete All</b>. It cannot be undone, so export first.</li>
+  </ul>
+</section>
+
+<section id="help">
+  <h2>7. Troubleshooting</h2>
+  <ul>
+    <li><b>The app looks old after an update.</b> Refresh the page, or close and reopen the home-screen app.</li>
+    <li><b>Paste &amp; Fill says it can't read the clipboard.</b> Your browser blocked it. Paste into the Voice text box and tap <b>Fill Form From Text</b>.</li>
+    <li><b>"I couldn't find log details."</b> Include words like route, tier, bus and kids, for example <code>route 336 tier 0 bus 4114 PM 15 kids</code>.</li>
+    <li><b>Nothing reaches Google Sheets.</b> Check that Auto Save is on, the URL ends in <code>/exec</code>, access is set to <b>Anyone</b>, and the script was deployed as a web app. Then run Test Webhook again.</li>
+    <li><b>Logs missing.</b> Logs live in one browser on one phone. Open the app in the same browser you used before.</li>
+  </ul>
+</section>
+</main>
+
+<footer>Bus Gardian LogBook &middot; Built by Michelle Minor</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById("copybtn");
+  var state = document.getElementById("copystate");
+  if (!btn) return;
+  btn.addEventListener("click", function () {
+    var text = document.querySelector("#script code").innerText;
+    function done(msg) { state.textContent = msg; setTimeout(function () { state.textContent = ""; }, 2500); }
+    function fallback() {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(document.querySelector("#script code"));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        done("Selected. Long-press and choose Copy.");
+      } catch (e) { done("Could not copy. Select the text and copy it."); }
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done("Copied."); }, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
